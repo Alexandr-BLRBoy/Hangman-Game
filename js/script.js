@@ -225,6 +225,50 @@ buttonWin.addEventListener('click', () => {
     location.reload();
 })
 
+// Modal window Your Lose
+const createModalWindowLose = () => {
+    const modalWindowContainer = document.createElement('div');
+    modalWindowContainer.classList.add('modal__window_container');
+    document.body.append(modalWindowContainer);
+
+    return modalWindowContainer;
+}
+const modalWindowLose = createModalWindowLose();
+
+const createModalWindowWrapper = (container) => {
+    const modalWindowWrapper = document.createElement('div');
+    modalWindowWrapper.classList.add('modal__window_wrapper');
+    container.appendChild(modalWindowWrapper);
+
+    return modalWindowWrapper;
+}
+const modalWindowWrapper = createModalWindowWrapper(modalWindowLose);
+
+const createTitleModalWindowLose = (container) => {
+    const titleModalWindow = document.createElement('h1');
+    titleModalWindow.classList.add('title__modal_window');
+    titleModalWindow.innerHTML = 'Game Over! <br><span>Your Lose!</span></br>';
+    container.appendChild(titleModalWindow);
+}
+createTitleModalWindowLose(modalWindowWrapper);
+
+const createTextAnswerModal = (container) => {
+    const textAnswer = document.createElement('p');
+    textAnswer.classList.add('text__answer_modal');
+    textAnswer.innerHTML = 'Answer: ' + `<span>${answer}</span>`;
+    container.appendChild(textAnswer);
+}
+createTextAnswer(modalWindowWrapper);
+
+const createButtonModalWindow = (container) => {
+    const buttonModalWindow = document.createElement('button');
+    buttonModalWindow.classList.add('button__modal_window');
+    buttonModalWindow.type = 'button';
+    buttonModalWindow.textContent = 'Play Again';
+    container.appendChild(buttonModalWindow);
+}
+createButtonModalWindow(modalWindowWrapper);
+
 
 
 
