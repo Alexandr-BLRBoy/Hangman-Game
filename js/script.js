@@ -24,4 +24,58 @@ const hangmanKeyboards = document.createElement('div');
 hangmanKeyboards.classList.add('hangman_keyboards');      // Hangman info container
 containerHangMan.appendChild(hangmanKeyboards);
 
+// Add img Hangman
+const createHangmanPics = (arr) => {
+    const hangmanWrapper = document.querySelector('.hangman_game');
+    arr.forEach(element => {
+        const img = document.createElement('img');
+        img.classList.add(element.className);
+        img.src = element.srcPics;
+        img.alt = 'picture';
+        hangmanWrapper.appendChild(img);
+    });
+
+}
+createHangmanPics(arrayHangmanBody);
+
+// Add title Hangman
+const hangmanTitle = document.createElement('h4');
+hangmanTitle.classList.add('hangman_title');
+hangmanTitle.textContent = 'Hangman Game';  //Hangman  game title
+hangmanGame.appendChild(hangmanTitle);
+
+// Create ul-List
+const createList = () => {
+    const listWords = document.createElement('ul');
+    listWords.classList.add('hangmanGame__list');  //List Words
+    hangmanKeyboards.appendChild(listWords);
+
+    return listWords;
+}
+const listWords = createList();
+
+// Create li-List Item
+const createListItem = (list, length) => {
+
+    for (let i = 1; i <= length; i++) {
+
+        const listItem = document.createElement('li');
+        listItem.classList.add('hangmanGame__list_item');  //List item
+        list.appendChild(listItem);
+    }
+}
+
+// Create question block
+const createElemQuestion = () => {
+    const question = document.createElement('p');
+    question.classList.add('question_game');
+    hangmanKeyboards.appendChild(question);
+
+    return question;
+}
+const returnQuestion = createElemQuestion();
+
+
+
+
 

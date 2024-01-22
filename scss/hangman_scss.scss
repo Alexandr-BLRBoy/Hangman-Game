@@ -25,6 +25,92 @@ body{
         flex-direction: column;
         align-items: center;
         position: relative;
+
+        /* Hangman pics */
+        .hangman_img{
+            max-height: 400px;
+        }
+
+        .hangman__head_pics{
+            position: absolute;
+            max-width: 80px;
+            top: 100px;
+            left: 169px;
+            display: none;
+        }
+
+        .hangman__body_pics{
+            position: absolute;
+            max-height: 100px;
+            top: 179px;
+            left: 206px;
+            display: none;
+        }
+
+        .left__hand_pics{
+            position: absolute;
+            max-height: 50px;
+            top: 190px;
+            left: 167px;
+            display: none;
+        }
+
+        .right__hand_pics{
+            position: absolute;
+            max-height: 50px;
+            top: 190px;
+            left: 207px;
+            display: none;
+        }
+
+        .left__leg_pics{
+            position: absolute;
+            max-height: 50px;
+            top: 277px;
+            left: 167px;
+            display: none;
+        }
+
+        .right__leg_pics{
+            position: absolute;
+            max-height: 50px;
+            top: 277px;
+            left: 207px;
+            display: none;
+        }
+
+        /* Hangman title */
+        .hangman_title{
+            font-size: 30px;
+        }
+
+    }
+
+    .hangman_keyboards{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .hangmanGame__list{
+            display: flex;
+            width: 55%;
+            height: 35px;
+            justify-content: space-evenly;
+        }
+
+        .hangmanGame__list_item{
+            list-style: none;
+            width: 35px;
+            border-bottom: 3px solid #333;
+            font-size: 2rem;
+            text-align: center;
+            text-transform: uppercase;
+        }
+
+        .question_game{
+            font-size: 35px;
+        }
+
     }
 }
 
