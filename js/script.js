@@ -108,7 +108,7 @@ const createKeyboard = (container) => {
 }
 createKeyboard(keyboardContainer);
 
-// Random questions
+// Get Random questions
 const getRandomQuestion = (question) => {
     const { word, hint } = wordList[Math.floor(Math.random() * wordList.length)];
     console.log('correct answer: ', word);
@@ -118,6 +118,61 @@ const getRandomQuestion = (question) => {
     return word;
 }
 const answer = getRandomQuestion(returnQuestion);
+
+//Open modal window
+const callPopUpWindow = () => {
+    const ulList = document.querySelector('.hangmanGame__list');
+
+    return Array.from(ulList.children).every((item) => item.innerHTML);
+}
+
+// Button listener
+keyboardContainer.addEventListener('click', (event) => {
+    const letter = event.target.innerHTML;
+    const ul = document.querySelector('.hangmanGame__list');
+    const liItems = Array.from(ul.children);
+
+    // Disabled click buttons
+    const arrBtn = Array.from(keyboardContainer.children);
+    for(let i = 0; i <= arrBtn.length; i++) {
+        if(arrBtn[i] === event.target) {
+            arrBtn[i].setAttribute('disabled', 'disabled');
+            arrBtn[i].style = 'background-color: rgb(151, 141, 158);'
+        }
+    }
+
+    if (answer.includes(letter)) {
+        const answerArr = answer.split('');
+        answerArr.map((item, index) => {
+
+            if (item === letter) {
+
+                liItems[index].innerHTML = letter;
+                liItems[index].style = 'border-bottom: none';
+
+            }
+        })
+    } else if (count <= 6) {
+
+        returnAttempt.innerHTML = `Incorrect guesses: <span>${count} / 6</span>`;
+        const className = arrayHangmanBody[count].className;
+        document.querySelector(`.${className}`).style.display = 'block';
+        count++;
+
+    }
+
+    if(callPopUpWindow()) {
+        document.querySelector('.popUp_wrapper').style = 'visibility: visible';
+        document.querySelector('.main').style = 'filter: blur(5px)';
+    }
+
+    if(count === (6 + 1)) {
+        document.querySelector('.modal__window_container').style = 'visibility: visible';
+        document.querySelector('.main').style = 'filter: blur(5px)';
+    }
+
+
+});
 
 
 
