@@ -75,6 +75,17 @@ const createElemQuestion = () => {
 }
 const returnQuestion = createElemQuestion();
 
+// Create attempts block
+const createAttempts = () => {
+    const attempts = document.createElement('p');
+    attempts.classList.add('attempts_games');
+    attempts.innerHTML = `Incorrect guesses: <span>0 / 6</span>`; //Attempts block
+    hangmanKeyboards.appendChild(attempts);
+
+    return attempts;
+}
+const returnAttempt = createAttempts();
+
 
 
 
