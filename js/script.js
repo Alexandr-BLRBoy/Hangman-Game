@@ -269,6 +269,12 @@ const createButtonModalWindow = (container) => {
 }
 createButtonModalWindow(modalWindowWrapper);
 
+// Button Play Again - Lose
+const buttonLose = document.querySelector('.button__modal_window');
+
+buttonLose.addEventListener('click', () => {
+    location.reload();
+})
 
 
 
