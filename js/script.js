@@ -174,6 +174,50 @@ keyboardContainer.addEventListener('click', (event) => {
 
 });
 
+// Modal Window Play Again
+const createPopUpWrapper = () => {
+    const popUpWrapper = document.createElement('div');
+    popUpWrapper.classList.add('popUp_wrapper');
+    document.body.append(popUpWrapper);
+
+    return popUpWrapper;
+}
+const popUpWrapperContainer = createPopUpWrapper();
+
+const createPopUpContainer = (container) => {
+    const popUpContainer = document.createElement('div');
+    popUpContainer.classList.add('popUp_container');
+    container.append(popUpContainer);
+
+    return popUpContainer;
+}
+const popUpWindowContainer = createPopUpContainer(popUpWrapperContainer);
+
+const createTitlePopup = (container) => {
+    const titlePopup = document.createElement('h1');
+    titlePopup.classList.add('popUp_title');
+    titlePopup.innerHTML = 'Congratulations! <br><span>You win!!!</span></br>';
+    container.appendChild(titlePopup);
+}
+createTitlePopup(popUpWindowContainer);
+
+const createTextAnswer = (container) => {
+    const answerQuestion = document.createElement('p');
+    answerQuestion.classList.add('answer_question');
+    answerQuestion.innerHTML = 'Answer: ' + `<span>${answer}</span>`;
+    container.appendChild(answerQuestion);
+}
+createTextAnswer(popUpWindowContainer);
+
+const createBtnPlayAgain = (container) => {
+    const btnPlayAgain = document.createElement('button');
+    btnPlayAgain.classList.add('btn_playAgain');
+    btnPlayAgain.textContent = 'Play Again';
+    btnPlayAgain.type = 'button';
+    container.appendChild(btnPlayAgain);
+}
+createBtnPlayAgain(popUpWindowContainer);
+
 
 
 
