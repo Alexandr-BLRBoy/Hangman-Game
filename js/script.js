@@ -218,6 +218,13 @@ const createBtnPlayAgain = (container) => {
 }
 createBtnPlayAgain(popUpWindowContainer);
 
+// Button Play Again - Win
+const buttonWin = document.querySelector('.btn_playAgain');
+
+buttonWin.addEventListener('click', () => {
+    location.reload();
+})
+
 
 
 
