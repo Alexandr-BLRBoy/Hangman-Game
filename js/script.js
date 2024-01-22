@@ -86,6 +86,39 @@ const createAttempts = () => {
 }
 const returnAttempt = createAttempts();
 
+// Create keyboard container
+const createKeyboardContainer = () => {
+    const keyboardsContainer = document.createElement('div');
+    keyboardsContainer.classList.add('keyboards__container'); //Keyboards Container
+    hangmanKeyboards.appendChild(keyboardsContainer);
+
+    return keyboardsContainer;
+}
+const keyboardContainer = createKeyboardContainer();
+
+// Create keyboard buttons
+const createKeyboard = (container) => {
+    for (let i = 97; i <= 122; i++) {
+        const keyboardsBtn = document.createElement('button');
+        keyboardsBtn.type = 'button';
+        keyboardsBtn.classList.add('keyboards__button');
+        keyboardsBtn.innerText = String.fromCharCode(i); // Keyboard
+        container.appendChild(keyboardsBtn);
+    }
+}
+createKeyboard(keyboardContainer);
+
+// Random questions
+const getRandomQuestion = (question) => {
+    const { word, hint } = wordList[Math.floor(Math.random() * wordList.length)];
+    console.log('correct answer: ', word);
+    question.innerHTML = 'Hint: ' + `<b>${hint}</b>`;
+    createListItem(listWords, word.length);
+
+    return word;
+}
+const answer = getRandomQuestion(returnQuestion);
+
 
 
 
