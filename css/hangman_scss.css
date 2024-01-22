@@ -1,15 +1,3 @@
-@font-face {
-  font-family: "Ubuntu-Regular.ttf";
-  src: local("Ubuntu-Regular"), url(../fonts/Ubuntu-Regular.ttf);
-  font-style: normal;
-  font-weight: normal;
-}
-@font-face {
-  font-family: "Ubuntu-Bold.ttf";
-  src: local("Ubuntu-Bold"), url(../fonts/Ubuntu-Bold.ttf);
-  font-style: normal;
-  font-weight: normal;
-}
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -62,4 +50,42 @@ table {
 img {
   width: 100%;
   height: auto;
+}
+
+@font-face {
+  font-family: "Ubuntu-Regular.ttf";
+  src: local("Ubuntu-Regular"), url(../fonts/Ubuntu-Regular.ttf);
+  font-style: normal;
+  font-weight: normal;
+}
+@font-face {
+  font-family: "Ubuntu-Bold.ttf";
+  src: local("Ubuntu-Bold"), url(../fonts/Ubuntu-Bold.ttf);
+  font-style: normal;
+  font-weight: normal;
+}
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: rgb(202, 153, 235);
+  position: relative;
+}
+
+.container_hangman {
+  max-width: 1000px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+  gap: 70px;
+}
+.container_hangman .hangman_game {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
 }/*# sourceMappingURL=hangman_scss.css.map */
