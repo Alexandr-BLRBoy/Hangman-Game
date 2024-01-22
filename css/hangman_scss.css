@@ -69,18 +69,18 @@ body {
   align-items: center;
   justify-content: center;
   min-height: 100vh;
-  background-color: rgb(202, 153, 235);
+  background-color: rgb(233, 196, 106);
   position: relative;
 }
 
 .container_hangman {
-  max-width: 1000px;
+  max-width: 1200px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 20px;
-  background-color: #fff;
   border-radius: 10px;
+  border: 3px solid rgb(231, 111, 81);
   gap: 70px;
 }
 .container_hangman .hangman_game {
@@ -88,6 +88,7 @@ body {
   flex-direction: column;
   align-items: center;
   position: relative;
+  gap: 35px;
   /* Hangman pics */
   /* Hangman title */
 }
@@ -97,47 +98,50 @@ body {
 .container_hangman .hangman_game .hangman__head_pics {
   position: absolute;
   max-width: 80px;
-  top: 100px;
-  left: 169px;
+  top: 101px;
+  left: 179px;
   display: none;
 }
 .container_hangman .hangman_game .hangman__body_pics {
   position: absolute;
   max-height: 100px;
-  top: 179px;
-  left: 206px;
+  top: 180px;
+  left: 87px;
   display: none;
 }
 .container_hangman .hangman_game .left__hand_pics {
   position: absolute;
   max-height: 50px;
   top: 190px;
-  left: 167px;
+  left: 67px;
   display: none;
 }
 .container_hangman .hangman_game .right__hand_pics {
   position: absolute;
   max-height: 50px;
   top: 190px;
-  left: 207px;
+  left: 107px;
   display: none;
 }
 .container_hangman .hangman_game .left__leg_pics {
   position: absolute;
   max-height: 50px;
   top: 277px;
-  left: 167px;
+  left: 67px;
   display: none;
 }
 .container_hangman .hangman_game .right__leg_pics {
   position: absolute;
   max-height: 50px;
   top: 277px;
-  left: 207px;
+  left: 107px;
   display: none;
 }
 .container_hangman .hangman_game .hangman_title {
-  font-size: 30px;
+  font-family: "Ubuntu-Bold.ttf";
+  font-weight: 700;
+  font-size: 40px;
+  text-align: center;
 }
 .container_hangman .hangman_keyboards {
   display: flex;
@@ -145,10 +149,13 @@ body {
   align-items: center;
 }
 .container_hangman .hangman_keyboards .hangmanGame__list {
+  font-family: "Ubuntu-Regular.ttf";
+  font-weight: 400;
   display: flex;
   width: 55%;
   height: 35px;
   justify-content: space-evenly;
+  margin-bottom: 25px;
 }
 .container_hangman .hangman_keyboards .hangmanGame__list_item {
   list-style: none;
@@ -157,7 +164,156 @@ body {
   font-size: 2rem;
   text-align: center;
   text-transform: uppercase;
+  color: #fff;
 }
 .container_hangman .hangman_keyboards .question_game {
+  font-family: "Ubuntu-Regular.ttf";
+  font-weight: 400;
   font-size: 35px;
+  margin-bottom: 25px;
+}
+.container_hangman .hangman_keyboards .question_game b {
+  font-family: "Ubuntu-Bold.ttf";
+}
+.container_hangman .hangman_keyboards .attempts_games {
+  font-size: 30px;
+  margin-bottom: 25px;
+  font-family: "Ubuntu-Bold.ttf";
+}
+.container_hangman .hangman_keyboards .attempts_games span {
+  font-family: "Ubuntu-Regular.ttf";
+  color: rgb(230, 57, 70);
+}
+.container_hangman .hangman_keyboards .keyboards__container {
+  display: flex;
+  gap: 7px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.container_hangman .hangman_keyboards .keyboards__container .keyboards__button {
+  font-family: "Ubuntu-Bold.ttf";
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  background-color: rgb(38, 70, 83);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  outline: none;
+  padding: 10px;
+  width: calc(11.1111111111% - 7px);
+}
+.container_hangman .hangman_keyboards .keyboards__container .keyboards__button:hover {
+  background-color: rgb(67, 101, 114);
+}
+
+/* Modal Window Win */
+.popUp_wrapper {
+  width: 40%;
+  background-color: rgba(42, 157, 143, 0.8);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 4;
+  padding: 45px;
+  border-radius: 20px;
+  visibility: hidden;
+}
+
+.popUp_container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.popUp_title {
+  font-family: "Ubuntu-Bold.ttf";
+  font-weight: 700;
+  font-size: 50px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.answer_question {
+  font-family: "Ubuntu-Regular.ttf";
+  font-weight: 400;
+  font-size: 50px;
+  text-align: center;
+  margin-bottom: 70px;
+}
+
+.answer_question span {
+  font-family: "Ubuntu-Bold.ttf";
+  text-transform: uppercase;
+}
+
+.btn_playAgain {
+  font-family: "Ubuntu-Bold.ttf";
+  font-weight: 700;
+  padding: 10px 20px;
+  font-size: 35px;
+  border: none;
+  border-radius: 15px;
+  background-color: rgb(30, 200, 132);
+  cursor: pointer;
+  transition: 0.2 ease-in-out;
+}
+
+.btn_playAgain:hover {
+  opacity: 0.8;
+}
+
+/* Modal Window Lose */
+.modal__window_container {
+  width: 40%;
+  background-color: rgba(211, 63, 63, 0.8);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 4;
+  padding: 20px;
+  border-radius: 20px;
+  visibility: hidden;
+}
+
+.modal__window_wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.title__modal_window {
+  font-family: "Ubuntu-Bold.ttf";
+  font-weight: 700;
+  font-size: 50px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.title__modal_window span {
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.text__answer_modal {
+  font-size: 50px;
+  text-align: center;
+}
+
+.button__modal_window {
+  font-family: "Ubuntu-Bold.ttf";
+  font-weight: 700;
+  padding: 10px 20px;
+  font-size: 35px;
+  border: none;
+  border-radius: 15px;
+  background-color: rgb(30, 200, 132);
+  cursor: pointer;
+}
+
+.button__modal_window:hover {
+  opacity: 0.8;
 }/*# sourceMappingURL=hangman_scss.css.map */

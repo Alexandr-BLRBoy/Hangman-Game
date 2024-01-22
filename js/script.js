@@ -196,7 +196,7 @@ const popUpWindowContainer = createPopUpContainer(popUpWrapperContainer);
 const createTitlePopup = (container) => {
     const titlePopup = document.createElement('h1');
     titlePopup.classList.add('popUp_title');
-    titlePopup.innerHTML = 'Congratulations! <br><span>You win!!!</span></br>';
+    titlePopup.innerHTML = 'Congratulations! <br><span>You win!</span></br>';
     container.appendChild(titlePopup);
 }
 createTitlePopup(popUpWindowContainer);
