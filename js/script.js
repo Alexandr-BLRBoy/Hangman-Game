@@ -20,13 +20,17 @@ const hangmanGame = document.createElement('div');
 hangmanGame.classList.add('hangman_game');                //Hangman game container
 containerHangMan.appendChild(hangmanGame);
 
+const blockImg = document.createElement('div');
+blockImg.classList.add('block_pics'); // Hangman img block
+hangmanGame.appendChild(blockImg);
+
 const hangmanKeyboards = document.createElement('div');
 hangmanKeyboards.classList.add('hangman_keyboards');      // Hangman info container
 containerHangMan.appendChild(hangmanKeyboards);
 
 // Add img Hangman
 const createHangmanPics = (arr) => {
-    const hangmanWrapper = document.querySelector('.hangman_game');
+    const hangmanWrapper = document.querySelector('.block_pics');
     arr.forEach(element => {
         const img = document.createElement('img');
         img.classList.add(element.className);
