@@ -167,14 +167,13 @@ keyboardContainer.addEventListener('click', (event) => {
 
     if(callPopUpWindow()) {
         document.querySelector('.popUp_wrapper').style = 'visibility: visible';
-        document.querySelector('.main').style = 'filter: blur(5px)';
+        Object.assign(document.querySelector('.main').style, {filter: 'blur(5px)', pointerEvents: 'none'});
     }
 
     if(count === (6 + 1)) {
         document.querySelector('.modal__window_container').style = 'visibility: visible';
-        document.querySelector('.main').style = 'filter: blur(5px)';
+        Object.assign(document.querySelector('.main').style, {filter: 'blur(5px)', pointerEvents: 'none'});
     }
-
 
 });
 

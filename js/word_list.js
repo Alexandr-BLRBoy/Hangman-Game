@@ -27,5 +27,12 @@ const wordList = [
     {
         word: 'spruce',
         hint: 'Winter and summer in the same color'
+    },
+    {
+        word: 'water',
+        hint: 'Can be in liquid, solid and gaseous state'
+    },{
+        word: 'skates',
+        hint: 'They skate on the ice'
     }
 ];
