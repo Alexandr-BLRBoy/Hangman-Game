@@ -30,7 +30,7 @@ containerHangMan.appendChild(hangmanKeyboards);
 
 // Add img Hangman
 const createHangmanPics = (arr) => {
-    const hangmanWrapper = document.querySelector('.block_pics');
+    const hangmanWrapper = blockImg;
     arr.forEach(element => {
         const img = document.createElement('img');
         img.classList.add(element.className);
@@ -102,15 +102,20 @@ const keyboardContainer = createKeyboardContainer();
 
 // Create keyboard buttons
 const createKeyboard = (container) => {
-    for (let i = 97; i <= 122; i++) {
+    for (let i = 65; i <= 90; i++) {
         const keyboardsBtn = document.createElement('button');
         keyboardsBtn.type = 'button';
         keyboardsBtn.classList.add('keyboards__button');
+        keyboardsBtn.setAttribute('data-code', `Key${String.fromCharCode(i)}`);
         keyboardsBtn.innerText = String.fromCharCode(i); // Keyboard
         container.appendChild(keyboardsBtn);
     }
 }
 createKeyboard(keyboardContainer);
+
+// KeyA => a
+const formaKeyboardCode = (code) => code[code.length - 1].toLowerCase();
+
 
 // Get Random questions
 const getRandomQuestion = (question) => {
@@ -130,19 +135,27 @@ const callPopUpWindow = () => {
     return Array.from(ulList.children).every((item) => item.innerHTML);
 }
 
-// Button listener
-keyboardContainer.addEventListener('click', (event) => {
-    const letter = event.target.innerHTML;
+const handleClick = (event) => {
+    let letter;
     const ul = document.querySelector('.hangmanGame__list');
     const liItems = Array.from(ul.children);
-
+    const button = document.querySelector(`[data-code = ${event.code}]`);
+    
     // Disabled click buttons
     const arrBtn = Array.from(keyboardContainer.children);
+
     for(let i = 0; i <= arrBtn.length; i++) {
-        if(arrBtn[i] === event.target) {
+        if(arrBtn[i] === event.target || arrBtn[i] === button) {
             arrBtn[i].setAttribute('disabled', 'disabled');
-            arrBtn[i].style = 'background-color: rgb(151, 141, 158);'
+            arrBtn[i].style = 'background-color: rgb(151, 141, 158)';
         }
+    }
+
+    if(event.code) {
+        letter = formaKeyboardCode(event.code);
+
+    } else {
+        letter = event.target.innerHTML;
     }
 
     if (answer.includes(letter)) {
@@ -175,7 +188,12 @@ keyboardContainer.addEventListener('click', (event) => {
         Object.assign(document.querySelector('.main').style, {filter: 'blur(5px)', pointerEvents: 'none'});
     }
 
-});
+}
+
+
+// Button listener
+keyboardContainer.addEventListener('click', (event) => handleClick(event));
+window.addEventListener('keydown', (event) => handleClick(event));
 
 // Modal Window Play Again
 const createPopUpWrapper = () => {
@@ -278,7 +296,3 @@ const buttonLose = document.querySelector('.button__modal_window');
 buttonLose.addEventListener('click', () => {
     location.reload();
 })
-
-
-
-
