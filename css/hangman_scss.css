@@ -1,0 +1,443 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: "";
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+img {
+  width: 100%;
+  height: auto;
+}
+
+@font-face {
+  font-family: "Ubuntu-Regular.ttf";
+  src: local("Ubuntu-Regular"), url(../fonts/Ubuntu-Regular.ttf);
+  font-style: normal;
+  font-weight: normal;
+}
+@font-face {
+  font-family: "Ubuntu-Bold.ttf";
+  src: local("Ubuntu-Bold"), url(../fonts/Ubuntu-Bold.ttf);
+  font-style: normal;
+  font-weight: normal;
+}
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: rgb(233, 196, 106);
+  position: relative;
+}
+
+.container_hangman {
+  max-width: 1200px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  border-radius: 10px;
+  border: 3px solid rgb(231, 111, 81);
+  gap: 70px;
+}
+@media (max-width: 800px) {
+  .container_hangman {
+    flex-direction: column;
+    border: none;
+  }
+}
+.container_hangman .hangman_game {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 35px;
+  /* Hangman pics */
+  /* Hangman title */
+}
+.container_hangman .hangman_game .hangman_img {
+  max-height: 400px;
+}
+.container_hangman .hangman_game .block_pics {
+  max-width: 244px;
+  position: relative;
+}
+@media (max-width: 460px) {
+  .container_hangman .hangman_game .block_pics {
+    max-width: 190px;
+  }
+}
+.container_hangman .hangman_game .hangman__head_pics {
+  position: absolute;
+  max-width: 33%;
+  top: 25%;
+  left: 70%;
+  display: none;
+}
+.container_hangman .hangman_game .hangman__body_pics {
+  position: absolute;
+  max-height: 25%;
+  top: 44%;
+  left: 35.5%;
+  display: none;
+}
+.container_hangman .hangman_game .left__hand_pics {
+  position: absolute;
+  max-height: 12%;
+  top: 47%;
+  left: 28%;
+  display: none;
+}
+.container_hangman .hangman_game .right__hand_pics {
+  position: absolute;
+  max-height: 12%;
+  top: 47%;
+  left: 43%;
+  display: none;
+}
+.container_hangman .hangman_game .left__leg_pics {
+  position: absolute;
+  max-height: 12%;
+  top: 68%;
+  left: 28%;
+  display: none;
+}
+.container_hangman .hangman_game .right__leg_pics {
+  position: absolute;
+  max-height: 12%;
+  top: 68%;
+  left: 43%;
+  display: none;
+}
+.container_hangman .hangman_game .hangman_title {
+  font-family: "Ubuntu-Bold.ttf";
+  font-weight: 700;
+  font-size: 40px;
+  text-align: center;
+}
+@media (max-width: 735px) {
+  .container_hangman .hangman_game .hangman_title {
+    font-size: 35px;
+  }
+}
+@media (max-width: 400px) {
+  .container_hangman .hangman_game .hangman_title {
+    font-size: 35px;
+  }
+}
+.container_hangman .hangman_keyboards {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.container_hangman .hangman_keyboards .hangmanGame__list {
+  font-family: "Ubuntu-Regular.ttf";
+  font-weight: 400;
+  display: flex;
+  width: 55%;
+  height: 35px;
+  justify-content: space-evenly;
+  margin-bottom: 25px;
+}
+@media (max-width: 735px) {
+  .container_hangman .hangman_keyboards .hangmanGame__list {
+    width: 60%;
+  }
+}
+@media (max-width: 450px) {
+  .container_hangman .hangman_keyboards .hangmanGame__list {
+    width: 75%;
+  }
+}
+.container_hangman .hangman_keyboards .hangmanGame__list_item {
+  list-style: none;
+  width: 35px;
+  border-bottom: 3px solid #333;
+  font-size: 2rem;
+  text-align: center;
+  text-transform: uppercase;
+  color: #fff;
+}
+@media (max-width: 735px) {
+  .container_hangman .hangman_keyboards .hangmanGame__list_item {
+    width: 30px;
+  }
+}
+.container_hangman .hangman_keyboards .question_game {
+  font-family: "Ubuntu-Regular.ttf";
+  font-weight: 400;
+  font-size: 35px;
+  margin-bottom: 25px;
+}
+@media (max-width: 835px) {
+  .container_hangman .hangman_keyboards .question_game {
+    font-size: 30px;
+  }
+}
+@media (max-width: 735px) {
+  .container_hangman .hangman_keyboards .question_game {
+    font-size: 25px;
+  }
+}
+@media (max-width: 400px) {
+  .container_hangman .hangman_keyboards .question_game {
+    font-size: 25px;
+  }
+}
+.container_hangman .hangman_keyboards .question_game b {
+  font-family: "Ubuntu-Bold.ttf";
+}
+.container_hangman .hangman_keyboards .attempts_games {
+  font-size: 30px;
+  margin-bottom: 25px;
+  font-family: "Ubuntu-Bold.ttf";
+}
+@media (max-width: 735px) {
+  .container_hangman .hangman_keyboards .attempts_games {
+    font-size: 25px;
+  }
+}
+@media (max-width: 400px) {
+  .container_hangman .hangman_keyboards .attempts_games {
+    font-size: 25px;
+  }
+}
+.container_hangman .hangman_keyboards .attempts_games span {
+  font-family: "Ubuntu-Regular.ttf";
+  color: rgb(230, 57, 70);
+}
+.container_hangman .hangman_keyboards .keyboards__container {
+  display: flex;
+  gap: 7px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.container_hangman .hangman_keyboards .keyboards__container .keyboards__button {
+  font-family: "Ubuntu-Bold.ttf";
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  background-color: rgb(38, 70, 83);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  outline: none;
+  padding: 10px;
+  width: calc(11.1111111111% - 7px);
+}
+.container_hangman .hangman_keyboards .keyboards__container .keyboards__button:hover {
+  background-color: rgb(67, 101, 114);
+}
+
+/* Modal Window Win */
+.popUp_wrapper {
+  width: 40%;
+  background-color: rgba(42, 157, 143, 0.8);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 4;
+  padding: 45px;
+  border-radius: 20px;
+  visibility: hidden;
+}
+@media (max-width: 730px) {
+  .popUp_wrapper {
+    width: 60%;
+  }
+}
+
+.popUp_container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.popUp_title {
+  font-family: "Ubuntu-Bold.ttf";
+  font-weight: 700;
+  font-size: 50px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+@media (max-width: 1000px) {
+  .popUp_title {
+    font-size: 40px;
+  }
+}
+@media (max-width: 415px) {
+  .popUp_title {
+    font-size: 30px;
+  }
+}
+
+.answer_question {
+  font-family: "Ubuntu-Regular.ttf";
+  font-weight: 400;
+  font-size: 50px;
+  text-align: center;
+  margin-bottom: 70px;
+}
+@media (max-width: 1000px) {
+  .answer_question {
+    font-size: 40px;
+  }
+}
+@media (max-width: 415px) {
+  .answer_question {
+    font-size: 30px;
+  }
+}
+
+.answer_question span {
+  font-family: "Ubuntu-Bold.ttf";
+  text-transform: uppercase;
+}
+
+.btn_playAgain {
+  font-family: "Ubuntu-Bold.ttf";
+  font-weight: 700;
+  padding: 10px 20px;
+  font-size: 35px;
+  border: none;
+  border-radius: 15px;
+  background-color: rgb(30, 200, 132);
+  cursor: pointer;
+  transition: 0.2 ease-in-out;
+}
+@media (max-width: 730px) {
+  .btn_playAgain {
+    font-size: 30px;
+  }
+}
+
+.btn_playAgain:hover {
+  opacity: 0.8;
+}
+
+/* Modal Window Lose */
+.modal__window_container {
+  width: 40%;
+  background-color: rgba(211, 63, 63, 0.8);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 4;
+  padding: 20px;
+  border-radius: 20px;
+  visibility: hidden;
+}
+@media (max-width: 730px) {
+  .modal__window_container {
+    width: 60%;
+  }
+}
+
+.modal__window_wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.title__modal_window {
+  font-family: "Ubuntu-Bold.ttf";
+  font-weight: 700;
+  font-size: 50px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+@media (max-width: 1000px) {
+  .title__modal_window {
+    font-size: 40px;
+  }
+}
+@media (max-width: 415px) {
+  .title__modal_window {
+    font-size: 30px;
+  }
+}
+
+.title__modal_window span {
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.text__answer_modal {
+  font-size: 50px;
+  text-align: center;
+}
+@media (max-width: 1000px) {
+  .text__answer_modal {
+    font-size: 40px;
+  }
+}
+@media (max-width: 415px) {
+  .text__answer_modal {
+    font-size: 30px;
+  }
+}
+
+.button__modal_window {
+  font-family: "Ubuntu-Bold.ttf";
+  font-weight: 700;
+  padding: 10px 20px;
+  font-size: 35px;
+  border: none;
+  border-radius: 15px;
+  background-color: rgb(30, 200, 132);
+  cursor: pointer;
+}
+@media (max-width: 730px) {
+  .button__modal_window {
+    font-size: 30px;
+  }
+}
+
+.button__modal_window:hover {
+  opacity: 0.8;
+}/*# sourceMappingURL=hangman_scss.css.map */
