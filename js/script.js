@@ -198,8 +198,8 @@ const handleClick = (event) => {
 }
 
 // Button listener
-keyboardContainer.addEventListener('click', (event) => handleClick(event));
-document.addEventListener('keydown', (event) => handleClick(event));
+keyboardContainer.addEventListener('click', handleClick);
+document.addEventListener('keydown', handleClick);
 
 // Modal Window Play Again
 const createPopUpWrapper = () => {
