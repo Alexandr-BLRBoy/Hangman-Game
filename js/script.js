@@ -107,7 +107,7 @@ const createKeyboard = (container) => {
         keyboardsBtn.type = 'button';
         keyboardsBtn.classList.add('keyboards__button');
         keyboardsBtn.setAttribute('data-code', `Key${String.fromCharCode(i)}`);
-        keyboardsBtn.innerText = String.fromCharCode(i); // Keyboard
+        keyboardsBtn.innerText = String.fromCharCode(i).toLowerCase(); // Keyboard
         container.appendChild(keyboardsBtn);
     }
 }
@@ -129,7 +129,7 @@ const getRandomQuestion = (question) => {
 const answer = getRandomQuestion(returnQuestion);
 
 //Open modal window
-const callPopUpWindow = () => {
+const checkIfAllItemsFilled = () => {
     const ulList = document.querySelector('.hangmanGame__list');
 
     return Array.from(ulList.children).every((item) => item.innerHTML);
@@ -140,7 +140,7 @@ const handleClick = (event) => {
     const ul = document.querySelector('.hangmanGame__list');
     const liItems = Array.from(ul.children);
     const button = document.querySelector(`[data-code = ${event.code}]`);
-    
+
     // Disabled click buttons
     const arrBtn = Array.from(keyboardContainer.children);
 
@@ -155,7 +155,7 @@ const handleClick = (event) => {
         letter = formaKeyboardCode(event.code);
 
     } else {
-        letter = event.target.innerHTML;
+        letter = event.target.innerHTML.toLowerCase();
     }
 
     if (answer.includes(letter)) {
@@ -178,22 +178,28 @@ const handleClick = (event) => {
 
     }
 
-    if(callPopUpWindow()) {
-        document.querySelector('.popUp_wrapper').style = 'visibility: visible';
-        Object.assign(document.querySelector('.main').style, {filter: 'blur(5px)', pointerEvents: 'none'});
-    }
+    const isWin = checkIfAllItemsFilled();
+    const isGameOver = count === 6 + 1;
 
-    if(count === (6 + 1)) {
-        document.querySelector('.modal__window_container').style = 'visibility: visible';
-        Object.assign(document.querySelector('.main').style, {filter: 'blur(5px)', pointerEvents: 'none'});
+    if(isWin) {
+      document.querySelector('.popUp_wrapper').style = 'visibility: visible';
+      Object.assign(document.querySelector('.main').style, { filter: 'blur(5px)', pointerEvents: 'none' });
+
+      document.removeEventListener('keydown', handleClick);
+  }
+
+    if(isGameOver) {
+      document.querySelector('.modal__window_container').style = 'visibility: visible';
+      Object.assign(document.querySelector('.main').style, { filter: 'blur(5px)', pointerEvents: 'none' });
+
+      document.removeEventListener('keydown', handleClick);
     }
 
 }
 
-
 // Button listener
 keyboardContainer.addEventListener('click', (event) => handleClick(event));
-window.addEventListener('keydown', (event) => handleClick(event));
+document.addEventListener('keydown', (event) => handleClick(event));
 
 // Modal Window Play Again
 const createPopUpWrapper = () => {
